@@ -27,3 +27,18 @@ La combinación de codigo_postal + edad + ciudad + fecha_alta.
 
 4. ¿Todos los datos que deben protegerse son necesariamente datos personales sensibles desde el punto de vista jurídico?
 No. Campos como el correo, teléfono o RFC son datos personales de identificación que exigen protección, pero no entran en la clasificación legal de datos sensibles (como estado de salud, religión, ideología o datos biométricos).
+
+# Actividad 2 — Enmascaramiento (masking)
+### Preguntas y Respuestas — Actividad 2
+
+1. ¿Qué información continúa existiendo en la tabla original?
+Toda la información real y completa de los clientes (correo, teléfono y RFC) intacta y sin alteración.
+
+2. ¿Qué información puede visualizar el usuario soporte?
+El ID, nombre y los datos sensibles (correo, teléfono y RFC) parcialmente enmascarados con asteriscos a través de la vista.
+
+3. ¿Por qué no es suficiente ocultar los datos únicamente en la aplicación?
+Porque si alguien accede directamente a la base de datos o mediante inyección SQL, se evade la seguridad de la aplicación y los datos reales quedarían totalmente expuestos.
+
+4. ¿Qué ocurriría si soporte tuviera acceso directo a clientes?
+Podría consultar y extraer la información personal confidencial de los usuarios, violando el principio de mínimo privilegio y las políticas de privacidad.
