@@ -42,3 +42,8 @@ Porque si alguien accede directamente a la base de datos o mediante inyección S
 
 4. ¿Qué ocurriría si soporte tuviera acceso directo a clientes?
 Podría consultar y extraer la información personal confidencial de los usuarios, violando el principio de mínimo privilegio y las políticas de privacidad.
+
+# Actividad 3 — Seudonimización (pseudonymization)
+En esta actividad se implementó la técnica de seudonimización mediante la creación de dos esquemas: pii y analitica. Se generó una tabla de mapeo en pii donde se asignó un token UUID único a cada ID de cliente utilizando la extensión pgcrypto. Luego, se creó la tabla analitica.clientes vinculando únicamente el token sintético con variables demográficas y de registro (edad, ciudad, código postal y fecha de alta). De esta manera, el equipo de analítica puede estudiar los datos sin tener acceso a identificadores directos como nombre, correo, teléfono o RFC.
+
+# Actividad 4 — Separación de funciones
