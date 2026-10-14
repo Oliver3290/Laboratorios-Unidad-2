@@ -1,7 +1,7 @@
 # Laboratorio 01 — Protección de datos
 Oliver Coronel Caro 4-4
 # Actividad 1 — Clasificación de los datos
-## Matriz de Clasificación de Datos (`tabla: clientes`)
+## Matriz de Clasificación de Datos `tabla: clientes`
 
 | Campo | ¿Identifica directamente? | ¿Puede contribuir a identificar? | ¿Requiere protección? | Justificación |
 | :--- | :---: | :---: | :---: | :--- |
