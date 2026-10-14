@@ -47,3 +47,18 @@ Podría consultar y extraer la información personal confidencial de los usuario
 En esta actividad se implementó la técnica de seudonimización mediante la creación de dos esquemas: pii y analitica. Se generó una tabla de mapeo en pii donde se asignó un token UUID único a cada ID de cliente utilizando la extensión pgcrypto. Luego, se creó la tabla analitica.clientes vinculando únicamente el token sintético con variables demográficas y de registro (edad, ciudad, código postal y fecha de alta). De esta manera, el equipo de analítica puede estudiar los datos sin tener acceso a identificadores directos como nombre, correo, teléfono o RFC.
 
 # Actividad 4 — Separación de funciones
+### Preguntas y Respuestas — Actividad 3
+
+1. ¿Qué ocurriría si analista pudiera consultar también pii.mapa_cliente?
+Podría realizar un cruce de datos (JOIN) entre la tabla analítica y el mapa de tokens para obtener el ID original del cliente, lo que permitiría reidentificar a las personas y anular la protección.
+
+2. ¿Qué principio de seguridad se está aplicando al separar ambos accesos?
+El Principio de Mínimo Privilegio y la Separación de Funciones (Separation of Duties).
+
+3. ¿Por qué la seudonimización no equivale a anonimización?
+Porque la seudonimización es un proceso reversible donde aún existe una relación que permite reidentificar al usuario mediante una clave o tabla externa, mientras que la anonimización es irreversible.
+
+4. ¿Qué información permite volver a relacionar el token con una persona?
+La tabla de correspondencia o mapa de tokens (`pii.mapa_cliente`), la cual vincula cada identificador sintético (`UUID`) con el identificador original (`cliente_id`).
+
+# Actividad 5
