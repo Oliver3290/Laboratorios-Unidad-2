@@ -30,3 +30,18 @@ Si no son iguales, ¿por qué? Porque gen_salt() genera una sal aleatoria cada v
 ¿Por qué no es necesario recuperar la contraseña original? Porque el sistema puede comprobar si la contraseña ingresada es correcta comparándola con el hash almacenado. De esta manera, no necesita conocer ni recuperar la contraseña original.
 
 ¿Por qué un hash no debe confundirse con cifrado? Un hash es una transformación unidireccional que no está diseñada para recuperar el dato original. En cambio, el cifrado permite recuperar la información original mediante una clave de descifrado. Por eso, las contraseñas deben almacenarse mediante funciones de hash seguras y no mediante cifrado reversible.
+
+## RFC oculto
+![Evidencia del laboratorio](cap/02-4.png)
+
+## Recuperar dato
+![Evidencia del laboratorio](cap/02-5.png)
+
+## 8.2 Preguntas
+¿Qué diferencia existe entre crypt() y pgp_sym_encrypt()? La función crypt() se utiliza para generar hashes de contraseñas, mientras que pgp_sym_encrypt() cifra información utilizando una clave secreta. La principal diferencia es que el hash no permite recuperar directamente el dato original, mientras que el cifrado sí permite hacerlo con la clave correcta.
+
+¿Cuál de los dos mecanismos permite recuperar el dato original? pgp_sym_encrypt() permite recuperar el dato original mediante la función pgp_sym_decrypt(), siempre que se utilice la clave correcta. En cambio, crypt() se utiliza para verificar contraseñas y no para recuperarlas.
+
+¿Qué ocurre si se utiliza una clave incorrecta? Si se utiliza una clave incorrecta en pgp_sym_decrypt(), PostgreSQL normalmente genera un error porque no puede descifrar correctamente la información.
+
+¿Qué problema de seguridad representa colocar la clave directamente en una consulta? Colocar la clave directamente en una consulta puede exponerla en el historial de comandos, registros del sistema o capturas de pantalla. Si una persona obtiene la clave, podría descifrar la información protegida. Por eso, es recomendable utilizar mecanismos seguros para administrar las claves.
